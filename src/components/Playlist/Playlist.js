@@ -1,10 +1,12 @@
 import "./Playlist.css";
+import Tracklist from "../Tracklist/Tracklist";
 
-const Playlist = () => {
+const Playlist = (props) => {
+  const { playlistTracks, playlistName } = props;
   return (
     <div className="Playlist">
       <input defaultValue={"New Playlist"} />
-      {/* <!-- Add a TrackList component --> */}
+      <Tracklist tracks={playlistTracks} playlistName={playlistName} />
       <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>
   );
