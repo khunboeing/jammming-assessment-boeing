@@ -64,24 +64,48 @@ const temp = [
 ];
 
 function App() {
-  const [searchResult, setSearchResult] = useState(data);
-  const [playlistName, setPlaylistName] = useState("PlaylistName Jaaa!");
-  const [playlistTracks, setPlaylistTracks] = useState(temp);
+  const [stateSearchResult, setStateSearchResult] = useState(data);
+  const [statePlaylistName, setStatePlaylistName] =
+    useState("PlaylistName Jaaa!");
+  const [statePlaylistTracks, setStatePlaylistTracks] = useState(temp);
+
+  function methodAddTrack(newTrack) {
+    if (statePlaylistTracks.find((oldTrack) => oldTrack.id === newTrack.id)) {
+      return;
+    } else {
+      return setStatePlaylistTracks([newTrack, ...statePlaylistTracks]);
+      //การเอาก้อน Array มาทับของเก่า มันเกิดการ update เลยเอา setPlaylistTracks
+    }
+  }
+
   return (
     <div>
       <h1>
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        {/* <!-- Add a SearchBar component --> */}
         <div className="App-playlist">
-          <SearchResults searchResult={searchResult} />
-
-          {/* <!-- Add a Playlist component --> */}
-          <Playlist
-            playlistName={playlistName}
-            playlistTracks={playlistTracks}
+          <SearchResults
+            propSearchResult={stateSearchResult}
+            propOnAdd={methodAddTrack}
           />
+          <Playlist
+            propPlaylistName={statePlaylistName}
+            propPlaylistTracks={statePlaylistTracks}
+          />
+          <button
+            onClick={() =>
+              methodAddTrack({
+                id: "3THdOskGxdJcRbp0DcS4s055",
+                name: "wooooooow",
+                artist: "NCT DREAM",
+                album: "Hello Future - The 1st Album Repackage",
+                uri: "spotify:track:3THdOskGxdJcRbp0DcS4s0",
+              })
+            }
+          >
+            test
+          </button>
         </div>
       </div>
     </div>

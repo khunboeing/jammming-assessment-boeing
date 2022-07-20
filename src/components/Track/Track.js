@@ -1,21 +1,30 @@
 import "./Track.css";
 
 const Track = (props) => {
-  const isRemoval = false;
-  const { track } = props;
+  const { propTrack, propIsRemoval, propOnAdd } = props;
+
+  function methodAddTrack() {
+    propOnAdd(propTrack);
+  }
 
   return (
     <div className="Track">
       <div className="Track-information">
-        <h3>{track.name}</h3>
+        <h3>{propTrack.name}</h3>
 
         <p>
-          {track.artist} | {track.album}
+          {propTrack.artist} | {propTrack.album}
         </p>
       </div>
 
-      {isRemoval ? <button className="Track-action">-</button> : " "}
-      {isRemoval ? " " : <button className="Track-action">+</button>}
+      {propIsRemoval ? (
+        <button className="Track-action" onClick={methodAddTrack}>
+          +
+        </button>
+      ) : (
+        " "
+      )}
+      {propIsRemoval ? " " : <button className="Track-action">-</button>}
     </div>
   );
 };

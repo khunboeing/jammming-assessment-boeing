@@ -1,16 +1,18 @@
 import "./Tracklist.css";
-import Track from "../Track/Track.js";
+import Track from "../Track/Track.js"; //สิ่งที่ import เข้ามาคือ child
 
 const Tracklist = (props) => {
-  const { tracks } = props;
+  const { propTracks, propOnAdd, propIsRemoval } = props;
 
   return (
     <div className="TrackList">
-      {tracks.map((track) => {
+      {propTracks.map((track) => {
         return (
           <Track
             key={track.id}
-            track={track} //เพื่อให้ข้อมูลถูกส่งเข้าไปในสะพาน
+            propTrack={track} //เพื่อให้ข้อมูลถูกส่งเข้าไปในสะพาน
+            propOnAdd={propOnAdd}
+            propIsRemoval={propIsRemoval}
           />
         );
       })}
