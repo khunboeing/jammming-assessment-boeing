@@ -1,9 +1,19 @@
-import "./TrackList.css";
+import "./Tracklist.css";
+import Track from "../Track/Track.js";
 
-const Tracklist = () => {
+const Tracklist = (props) => {
+  const { tracks } = props;
+
   return (
     <div className="TrackList">
-      {/* <!-- You will add a map method that renders a set of Track components  --> */}
+      {tracks.map((track) => {
+        return (
+          <Track
+            key={track.id}
+            track={track} //เพื่อให้ข้อมูลถูกส่งเข้าไปในสะพาน
+          />
+        );
+      })}
     </div>
   );
 };

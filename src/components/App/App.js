@@ -1,6 +1,10 @@
 import "./App.css";
+import { useState } from "react";
+import data from "../../Util/data.js";
+import SearchResults from "../SearchResults/SearchResults";
 
 function App() {
+  const [searchResult, setSearchResult] = useState(data);
   return (
     <div>
       <h1>
@@ -9,8 +13,9 @@ function App() {
       <div className="App">
         {/* <!-- Add a SearchBar component --> */}
         <div className="App-playlist">
-          {/* <!-- Add a SearchResults component -->
-        <!-- Add a Playlist component --> */}
+          <SearchResults searchResult={searchResult} />
+
+          {/* <!-- Add a Playlist component --> */}
         </div>
       </div>
     </div>
