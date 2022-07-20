@@ -78,6 +78,13 @@ function App() {
     }
   }
 
+  function methodRemoveTrack(removeTrack) {
+    const newPlaylistTracks = statePlaylistTracks.filter(
+      (oldTrack) => oldTrack.id !== removeTrack.id
+    );
+    setStatePlaylistTracks(newPlaylistTracks);
+  }
+
   return (
     <div>
       <h1>
@@ -92,6 +99,7 @@ function App() {
           <Playlist
             propPlaylistName={statePlaylistName}
             propPlaylistTracks={statePlaylistTracks}
+            propOnRemove={methodRemoveTrack}
           />
           <button
             onClick={() =>

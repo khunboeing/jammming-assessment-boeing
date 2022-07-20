@@ -1,12 +1,15 @@
 import "./Track.css";
 
 const Track = (props) => {
-  const { propTrack, propIsRemoval, propOnAdd } = props;
+  const { propTrack, propIsRemoval, propOnAdd, propOnRemove } = props;
 
   function methodAddTrack() {
     propOnAdd(propTrack);
   }
 
+  function methodOnRemove() {
+    propOnRemove(propTrack);
+  }
   return (
     <div className="Track">
       <div className="Track-information">
@@ -24,7 +27,13 @@ const Track = (props) => {
       ) : (
         " "
       )}
-      {propIsRemoval ? " " : <button className="Track-action">-</button>}
+      {propIsRemoval ? (
+        " "
+      ) : (
+        <button className="Track-action" onClick={methodOnRemove}>
+          -
+        </button>
+      )}
     </div>
   );
 };
