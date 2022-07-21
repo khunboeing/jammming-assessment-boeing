@@ -1,5 +1,5 @@
 const clientId = "8d1423942fe544509cfe340943e938ff";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "https://jammming-assessment-boeing.vercel.app";
 let userAccessToken;
 
 const Spotify = {
