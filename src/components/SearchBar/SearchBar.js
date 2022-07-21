@@ -2,8 +2,14 @@ import "./SearchBar.css";
 
 const SearchBar = (props) => {
   const { propOnSearch } = props;
+
+  let searchTerm = "";
+
   function methodHandleTermChange(event) {
-    propOnSearch(event.target.value);
+    searchTerm = event.target.value;
+  }
+  function buttonSearh() {
+    propOnSearch(searchTerm);
   }
 
   return (
@@ -12,7 +18,9 @@ const SearchBar = (props) => {
         placeholder="Enter A Song, Album, or Artist"
         onChange={methodHandleTermChange}
       />
-      <button className="SearchButton">SEARCH</button>
+      <button className="SearchButton" onClick={buttonSearh}>
+        SEARCH
+      </button>
     </div>
   );
 };

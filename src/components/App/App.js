@@ -4,6 +4,7 @@ import data from "../../Util/data.js";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist.js";
 import SearchBar from "../SearchBar/SearchBar.js";
+import spotify from "../../Util/spotify.js";
 
 const temp = [
   {
@@ -97,8 +98,10 @@ function App() {
     console.log(trackURIs);
   }
 
-  function methodSearch(search) {
-    console.log(search);
+  function methodSearch(searchMusic) {
+    spotify
+      .search(searchMusic)
+      .then((response) => setStateSearchResult(response));
   }
 
   return (
