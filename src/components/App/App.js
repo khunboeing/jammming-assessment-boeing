@@ -3,6 +3,7 @@ import { useState } from "react";
 import data from "../../Util/data.js";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist.js";
+import SearchBar from "../SearchBar/SearchBar.js";
 
 const temp = [
   {
@@ -96,12 +97,17 @@ function App() {
     console.log(trackURIs);
   }
 
+  function methodSearch(search) {
+    console.log(search);
+  }
+
   return (
     <div>
       <h1>
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
+        <SearchBar propOnSearch={methodSearch} />
         <div className="App-playlist">
           <SearchResults
             propSearchResult={stateSearchResult}
