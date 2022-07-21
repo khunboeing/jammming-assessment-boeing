@@ -85,6 +85,17 @@ function App() {
     setStatePlaylistTracks(newPlaylistTracks);
   }
 
+  function methodUpdatePlaylist(name) {
+    setStatePlaylistName(name);
+  }
+  function methodSavePlaylist() {
+    const trackURIs = statePlaylistTracks.map(
+      (PlaylistTracks) => PlaylistTracks.uri
+    );
+
+    console.log(trackURIs);
+  }
+
   return (
     <div>
       <h1>
@@ -100,20 +111,9 @@ function App() {
             propPlaylistName={statePlaylistName}
             propPlaylistTracks={statePlaylistTracks}
             propOnRemove={methodRemoveTrack}
+            propOnNameChange={methodUpdatePlaylist}
+            propOnSave={methodSavePlaylist}
           />
-          <button
-            onClick={() =>
-              methodAddTrack({
-                id: "3THdOskGxdJcRbp0DcS4s055",
-                name: "wooooooow",
-                artist: "NCT DREAM",
-                album: "Hello Future - The 1st Album Repackage",
-                uri: "spotify:track:3THdOskGxdJcRbp0DcS4s0",
-              })
-            }
-          >
-            test
-          </button>
         </div>
       </div>
     </div>
