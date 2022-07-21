@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import data from "../../Util/data.js";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist.js";
@@ -70,6 +70,10 @@ function App() {
   const [statePlaylistName, setStatePlaylistName] =
     useState("PlaylistName Jaaa!");
   const [statePlaylistTracks, setStatePlaylistTracks] = useState(temp);
+
+  useEffect(() => {
+    spotify.getAccessToken();
+  }, []);
 
   function methodAddTrack(newTrack) {
     if (statePlaylistTracks.find((oldTrack) => oldTrack.id === newTrack.id)) {
