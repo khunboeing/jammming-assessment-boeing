@@ -66,10 +66,10 @@ const temp = [
 ];
 
 function App() {
-  const [stateSearchResult, setStateSearchResult] = useState(data);
+  const [stateSearchResult, setStateSearchResult] = useState([]);
   const [statePlaylistName, setStatePlaylistName] =
     useState("PlaylistName Jaaa!");
-  const [statePlaylistTracks, setStatePlaylistTracks] = useState(temp);
+  const [statePlaylistTracks, setStatePlaylistTracks] = useState([]);
 
   useEffect(() => {
     spotify.getAccessToken();
@@ -99,7 +99,9 @@ function App() {
       (PlaylistTracks) => PlaylistTracks.uri
     );
 
-    console.log(trackURIs);
+    spotify.savePlayList(statePlaylistName, trackURIs);
+    setStatePlaylistName("New Playlist");
+    setStatePlaylistTracks([]);
   }
 
   function methodSearch(searchMusic) {

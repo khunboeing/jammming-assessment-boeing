@@ -16,7 +16,7 @@ const Playlist = (props) => {
 
   return (
     <div className="Playlist">
-      <input defaultValue={"New Playlist"} onChange={methodHandleNameChange} />
+      <input value={propPlaylistName} onChange={methodHandleNameChange} />
       <Tracklist
         propTracks={propPlaylistTracks}
         propPlaylistName={propPlaylistName}
